@@ -115,7 +115,7 @@ public class PhonebookManager {
         }while (!choose.equals("2"));
     }
     public Contact getContactByPhoneNumber(){
-        System.out.println("mời nhập số điện thoại muốn sửa");
+        System.out.println("mời nhập số điện thoại ");
         Boolean check = false;
         Contact contact=null;
         while (!check){
@@ -129,7 +129,7 @@ public class PhonebookManager {
                 }
             }
             if(numberPhone.equals("")) break;
-            if(!check) System.out.println(" ko tìm thấy số điện thoại trên mời nhập lai");
+            if(!check) System.out.println(" ko tìm thấy số điện thoại trên mời nhập lai hoặc nhấn enter để thoát");
         }
         return contact;
     }
