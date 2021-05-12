@@ -161,9 +161,15 @@ public class PhonebookManager {
     public void getContact(){
         System.out.println("mời nhập số điện thoại cần tìm kiếm");
         String phoneNumber = scanner.nextLine();
-        String []
-        for (int i = 0; i < phoneNumber.length(); i++) {
+        Boolean check = false;
+        for (Contact c:contacts
+             ) {
+            if(c.getPhoneNumber().contains(phoneNumber)){
+                System.out.println(c);
+                check = true;
+            }
         }
+        if(!check) System.out.println("số điện thoại ko tồn tại trong thuê bao");
     }
     public void getDataInFile(){
         contacts = textFileFactory.readerFile("data.txt");
