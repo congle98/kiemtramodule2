@@ -25,7 +25,7 @@ public class Client {
             System.out.println("4.Xoá liên hệ");
             System.out.println("5.Tìm kiếm");
             System.out.println("6.Đọc từ file");
-            System.out.println("7.Ghi từ file");
+            System.out.println("7.Ghi vào file");
             System.out.println("8.Thoát");
             choose = scanner.nextLine();
             switch (choose){
@@ -42,7 +42,7 @@ public class Client {
                     phonebookManager.deleteContact();
                     break;
                 case "5":
-
+                    phonebookManager.getContact();
                     break;
                 case "6":
                     phonebookManager.getDataInFile();
