@@ -194,13 +194,13 @@ public class PhonebookManager {
         if(!check) System.out.println("số điện thoại ko tồn tại trong thuê bao");
     }
     public void getDataInFile(){
-        contacts = textFileFactory.readerFile("data.txt");
+        contacts = textFileFactory.readerFile("data.csv");
         if(contacts.size()==0){
             System.out.println("file chưa có dữ liệu!!");
         }
     }
     public void saveDataOutFile(){
-        textFileFactory.saveFile(contacts,"data.txt");
+        textFileFactory.saveFile(contacts,"data.csv");
     }
 
 }
