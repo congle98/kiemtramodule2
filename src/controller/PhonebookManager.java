@@ -11,12 +11,19 @@ public class PhonebookManager {
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private TextFileFactory textFileFactory = TextFileFactory.getINSTANCE();
+    private CheckInput checkInput = CheckInput.getINSTANCE();
 
 
 
     public String createPhoneNumber(){
         System.out.println("mời nhập số điện thoại");
-        String phoneNumber = scanner.nextLine();
+        String phoneNumber="";
+        do {
+            phoneNumber = scanner.nextLine();
+            if(!checkInput.checkIDCard(phoneNumber)){
+                System.out.println("nhập sai định dang sđt, sđt phải có 10 số");
+            }
+        }while (!checkInput.checkIDCard(phoneNumber));
         return phoneNumber;
     }
     public String createGroup(){
@@ -46,7 +53,13 @@ public class PhonebookManager {
     }
     public String createEmail(){
         System.out.println("mời nhập Email");
-        String email = scanner.nextLine();
+        String email="";
+        do {
+             email = scanner.nextLine();
+             if(!checkInput.checkEmail(email)){
+                 System.out.println("nhập sai định dạng email mời nhập lại vd:cong@gmail.com");
+             }
+        }while (!checkInput.checkEmail(email));
         return email;
     }
     public void addContact(){
