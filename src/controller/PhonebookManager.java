@@ -9,8 +9,8 @@ import java.util.Scanner;
 
 public class PhonebookManager {
     private Scanner scanner = new Scanner(System.in);
-    private ArrayList<Contact> contacts = new ArrayList<Contact>();
     private TextFileFactory textFileFactory = TextFileFactory.getINSTANCE();
+    private ArrayList<Contact> contacts = new ArrayList<>();
     private CheckInput checkInput = CheckInput.getINSTANCE();
 
 
@@ -18,12 +18,21 @@ public class PhonebookManager {
     public String createPhoneNumber(){
         System.out.println("mời nhập số điện thoại");
         String phoneNumber="";
+        boolean check = false;
         do {
+            check =false;
             phoneNumber = scanner.nextLine();
-            if(!checkInput.checkIDCard(phoneNumber)){
+            if(!checkInput.checkPhoneNumber(phoneNumber)){
                 System.out.println("nhập sai định dang sđt, sđt phải có 10 số");
             }
-        }while (!checkInput.checkIDCard(phoneNumber));
+            for (Contact c:contacts
+                 ) {
+                if(c.getPhoneNumber().equals(phoneNumber)){
+                    System.out.println("sđt đã tồn tại trong danh bạ mời nhập lại");
+                    check=true;
+                }
+            }
+        }while (!checkInput.checkPhoneNumber(phoneNumber)||check);
         return phoneNumber;
     }
     public String createGroup(){
@@ -186,7 +195,7 @@ public class PhonebookManager {
     }
     public void getDataInFile(){
         contacts = textFileFactory.readerFile("data.txt");
-        if(contacts==null){
+        if(contacts.size()==0){
             System.out.println("file chưa có dữ liệu!!");
         }
     }
